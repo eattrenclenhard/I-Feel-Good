@@ -1,0 +1,38 @@
+<LoginScreen>
+    GridLayout: # parent widget that houses all other widget(s)
+        cols: 1
+        GridLayout:
+            cols: 1 # must specify column number, else everything would be tucked into the lower left corner
+            Label:
+                text: 'User Login'
+            TextInput:
+                hint_text: 'Username'
+            TextInput:
+                hint_text: 'Password'
+            Button:
+                text: 'Login'
+        GridLayout:
+            cols: 2
+            Button:
+                text: 'Forgot Password?'
+            Button:
+                text: 'Sign Up'
+                on_press: root.sign_up()
+
+<SignUpScreen>
+    GridLayout:
+        cols: 1
+        Label:
+            text: 'Sign up for a space journey!'
+        TextInput:
+            hint_text: 'Username'
+        Button:
+            text: 'Submit'
+
+
+<RootWidget>: # invisible widget that keeps track of all the screens of the app
+    LoginScreen:
+        name: "login_screen" # acts as an identifier
+    SignupScreen:
+        name: "signup_screen"
+# root keyword is analogous to python class's self
