@@ -17,7 +17,7 @@
                 text: 'Forgot Password?'
             Button:
                 text: 'Sign Up'
-                on_press: root.sign_up()
+                on_press: root.to_signup()
 
 <SignUpScreen>
     GridLayout:
@@ -34,10 +34,20 @@
             text: 'Submit'
             on_press: root.add_user(root.ids.username.text, root.ids.password.text)
 
+<SignupSuccessScreen>
+    GridLayout:
+        cols: 1
+        Label:
+            text: 'Sign up successful!'
+        Button:
+            text: 'Login page'
+            on_press: root.to_login() # navigate back to login page
 
 <RootWidget>: # invisible widget that keeps track of all the screens of the app
     LoginScreen:
-        name: "login_screen" # acts as an identifier
+        name: 'login_screen' # acts as an identifier
     SignupScreen:
-        name: "signup_screen"
+        name: 'signup_screen'
+    SignupSuccessScreen:
+        name: 'signup_success_screen'
 # root keyword is analogous to python class's self

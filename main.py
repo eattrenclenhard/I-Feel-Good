@@ -9,7 +9,7 @@ Builder.load_file('design.kv')
 
 
 class LoginScreen(Screen):
-    def sign_up(self):
+    def to_signup(self):
         self.manager.current = "signup_screen"
 
 
@@ -23,6 +23,12 @@ class SignupScreen(Screen):
         with open('user.json', 'w') as f:
             json.dump(users, f)
 
+        self.manager.current = 'signup_success_screen'
+
+class SignupSuccessScreen(Screen):
+    def to_login(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = "login_screen"
 
 class RootWidget(ScreenManager):
     pass
