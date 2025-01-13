@@ -32,7 +32,7 @@
             Button:
                 text: 'Forgot Password?'
                 background_color: 1,1,1,0
-                opacity: 1 if self.state == 'normal' else .5
+                opacity: 1 if self.state == 'normal' else .5 # self is used to denote widget, root is used to refer to parent widget
                 color: .1, .7, 1, 1
             Button:
                 text: 'Sign Up'
@@ -60,9 +60,14 @@
         Button:
             text: 'Enlighten me'
             on_press: root.get_quote(root.ids.feeling.text) # retrieve input for feeling from user
-        Label:
-            id: quoteoftheday
-            text: ""
+        ScrollView:
+            Label: # the indented keys are all attributes
+                id: quoteforyou
+                text: ""
+                text_size: self.width, None # notice that the label is dynamically resized as user squeeze the window
+                # make the height of the label fit/match the height of the text
+                size_hint_y: None
+                height: self.texture_size[1] # do this instead of fixed size 400
 
 <SignUpScreen>
     GridLayout:

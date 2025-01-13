@@ -28,14 +28,13 @@ class LoginScreen(Screen):
             users = json.load(f)
 
         if uname_param in users.keys():
-            f = users[uname_param]['password']
             if pword_param == users[uname_param]['password']:
                 Logger.info(f'User `{uname_param}` authenticated')
                 self.manager.current = 'login_success_screen'
         else:
             Logger.info(
                 f'User `{uname_param}` and password `{pword_param}` does not match any record found in database.')
-            self.ids.login_wrong.text = 'wrong username or password'  # conditional update
+            self.ids.login_wrong.text = 'Wrong username or password!'  # conditional update
 
 
 class LoginSuccessScreen(Screen):
@@ -54,9 +53,10 @@ class LoginSuccessScreen(Screen):
                 quotes = f.readlines()
             quote = choice(quotes)
             Logger.info(f'Quote of the day `{quote}`')
-            self.ids.quoteoftheday.text = quote
+            self.ids.quoteforyou.text = quote
         else:
             Logger.error(f'Feeling `{feeling_param}` is not supported yet')
+            self.ids.quoteforyou.text = f'Feeling "{feeling_param}" is not supported yet'
 
 
 class ImageButton(ButtonBehavior, HoverBehavior, Image):
