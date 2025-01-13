@@ -3,26 +3,42 @@
         cols: 1
         GridLayout:
             cols: 1 # must specify column number, else everything would be tucked into the lower left corner
+            padding: 15, 15
+            spacing: 20, 20
             Label:
                 text: 'User Login'
+                font_size: '20sp'
             TextInput:
                 id: username
                 hint_text: 'Username'
             TextInput:
                 id: password
                 hint_text: 'Password'
-            Button:
-                text: 'Login'
-                on_press: root.login(root.ids.username.text, root.ids.password.text)
+                password: True
+            RelativeLayout:
+                Button:
+                    text: 'Login'
+                    on_press: root.login(root.ids.username.text, root.ids.password.text)
+                    size_hint: .3, .5
+                    pos_hint: {'center_x': .5, 'center_y': .6}
             Label:
                 id: login_wrong # acts as an identifier
                 text: ''
         GridLayout:
             cols: 2
+            size_hint: 0, .2
+            padding: 10, 10
+            spacing: 10, 0
             Button:
                 text: 'Forgot Password?'
+                background_color: 1,1,1,0
+                opacity: 1 if self.state == 'normal' else .5
+                color: .1, .7, 1, 1
             Button:
                 text: 'Sign Up'
+                background_color: 1,1,1,0
+                opacity: 1 if self.state == 'normal' else .5
+                color: .1, .7, 1, 1
                 on_press: root.to_signup() # root keyword is analogous to python class's self
 
 <LoginSuccessScreen>
