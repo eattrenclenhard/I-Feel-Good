@@ -62,6 +62,8 @@
 <SignUpScreen>
     GridLayout:
         cols: 1
+        padding: 20, 20
+        spacing: 20, 20
         Label:
             text: 'Sign up for a space journey!'
         TextInput:
@@ -70,9 +72,14 @@
         TextInput:
             id: password
             hint_text: 'Password'
-        Button:
-            text: 'Submit'
-            on_press: root.add_user(root.ids.username.text, root.ids.password.text)
+            password: True
+            password_mask: '\u2022'
+        RelativeLayout:
+            Button:
+                text: 'Submit'
+                size_hint: .3, .3
+                pos_hint: {'center_x': .5, 'center_y': .6}
+                on_press: root.add_user(root.ids.username.text, root.ids.password.text)
 
 <SignupSuccessScreen>
     GridLayout:
