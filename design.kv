@@ -6,18 +6,42 @@
             Label:
                 text: 'User Login'
             TextInput:
+                id: username
                 hint_text: 'Username'
             TextInput:
+                id: password
                 hint_text: 'Password'
             Button:
                 text: 'Login'
+                on_press: root.login(root.ids.username.text, root.ids.password.text)
+            Label:
+                id: login_wrong # acts as an identifier
+                text: ''
         GridLayout:
             cols: 2
             Button:
                 text: 'Forgot Password?'
             Button:
                 text: 'Sign Up'
-                on_press: root.to_signup()
+                on_press: root.to_signup() # root keyword is analogous to python class's self
+
+<LoginSuccessScreen>
+    GridLayout:
+        cols: 1
+        Button:
+            text: 'Logout'
+            on_press: root.logout()
+        Label:
+            text: 'How do you feel?'
+        TextInput:
+            id: feeling
+            hint_text: 'please choose from one of these: happy, sad, unloved ' # , exhilarating, melancholic'
+        Button:
+            text: 'Enlighten me'
+            on_press: root.get_quote(root.ids.feeling.text) # retrieve input for feeling from user
+        Label:
+            id: quoteoftheday
+            text: "<placeholder>"
 
 <SignUpScreen>
     GridLayout:
@@ -46,8 +70,9 @@
 <RootWidget>: # invisible widget that keeps track of all the screens of the app
     LoginScreen:
         name: 'login_screen' # acts as an identifier
+    LoginSuccessScreen:
+        name: 'login_success_screen'
     SignupScreen:
         name: 'signup_screen'
     SignupSuccessScreen:
         name: 'signup_success_screen'
-# root keyword is analogous to python class's self
