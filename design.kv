@@ -44,9 +44,14 @@
 <LoginSuccessScreen>
     GridLayout:
         cols: 1
-        Button:
-            text: 'Logout'
-            on_press: root.logout()
+        padding: 30, 30
+        spacing: 30, 30
+        RelativeLayout:
+            ImageButton:
+                on_press: root.logout()
+                source: 'logout_hover.png' if self.hovered else 'logout_nothover.png'
+                size_hint: .35, .35
+                pos_hint: {'center_x': .93, 'center_y': .8} # align right
         Label:
             text: 'How do you feel?'
         TextInput:
@@ -57,7 +62,7 @@
             on_press: root.get_quote(root.ids.feeling.text) # retrieve input for feeling from user
         Label:
             id: quoteoftheday
-            text: "<placeholder>"
+            text: ""
 
 <SignUpScreen>
     GridLayout:

@@ -2,6 +2,9 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, \
     Screen  # from kivy.uix.gridlayout import GridLayout # if we were to code entirely in python, without parsing design.kv using Builder.load_file method
+from hoverable import HoverBehavior
+from kivy.uix.image import Image
+from kivy.uix.behaviors import ButtonBehavior
 import json
 from glob import glob
 from pathlib import Path
@@ -54,6 +57,10 @@ class LoginSuccessScreen(Screen):
             self.ids.quoteoftheday.text = quote
         else:
             Logger.error(f'Feeling `{feeling_param}` is not supported yet')
+
+
+class ImageButton(ButtonBehavior, HoverBehavior, Image):
+    pass
 
 
 class SignupScreen(Screen):
